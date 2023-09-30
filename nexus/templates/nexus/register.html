@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Register | Nexus {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2 class="text-center">You're Already Registered</h2>
+<br>
+<h4 class="text-center"><a style="text-decoration: none;" href="{% url 'home' %}">Navigate to Home</a></h4>
+{% else %}
+<div class="col-md-6 offset-md-3">
+    <h2>Register</h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-warning">Register</button>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

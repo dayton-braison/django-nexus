@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Login | Nexus {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2 class="text-center">You're Already Logged In</h2>
+<br>
+<h4 class="text-center"><a style="text-decoration: none;" href="{% url 'home' %}">Navigate to Home</a></h4>
+{% else %}
+<div class="col-md-6 offset-md-3">
+    <h2>Login</h2>
+    <br>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Enter your username....">
+        <br>
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Enter your password....">
+        <br>
+        <button type="submit" class="btn btn-warning">Login</button>
+    </form>
+</div>
+{% endif %}
+
+
+{% endblock %}
